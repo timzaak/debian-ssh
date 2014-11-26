@@ -1,5 +1,5 @@
 FROM debian:latest
-MAINTAINER Fernando Mayo <fernando@tutum.co>
+MAINTAINER Tom Xiong <tomxiongzh@gmail.com>
 
 # Install packages
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get -y install openssh-server pwgen

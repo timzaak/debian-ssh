@@ -1,4 +1,4 @@
-tutum-debian
+debian-ssh
 ============
 
 Simple Debian docker images with SSH access
@@ -7,26 +7,26 @@ Simple Debian docker images with SSH access
 Usage
 -----
 
-To create the image `tutum/debian` with one tag per Debian release, 
-execute the following commands on the tutum-debian folder:
+To create the image `debian-ssh` with one tag per Debian release, 
+execute the following commands on the debian-ssh folder:
 
     git checkout master
-    dcoker build -t tutum/debian:latest .
+    dcoker build -t tomxiong/debian-ssh:latest .
 
     git checkout squeeze
-	docker build -t tutum/debian:squeeze .
+	docker build -t tomxiong/debian-ssh:squeeze .
 
     git checkout wheezy
-	docker build -t tutum/debian:wheezy .
+	docker build -t tomxiong/debian-ssh:wheezy .
 
 
-Running tutum/debian
+Running debian-ssh
 --------------------
 
 To run a container from the image you created earlier with the `wheezy` tag 
 binding it to port 2222 in all interfaces, execute:
 
-	docker run -d -p 2222:22 tutum/debian:wheezy
+	docker run -d -p 2222:22 tomxiong/debian-ssh:wheezy
 
 The first time that you run your container, a random password will be generated
 for user `root`. To get the password, check the logs of the container by running:
@@ -36,7 +36,7 @@ for user `root`. To get the password, check the logs of the container by running
 You will see an output like the following:
 
 	========================================================================
-	You can now connect to this Debian container via SSH using:
+	You can now connect to this debian-ssh container via SSH using:
 
 	    ssh -p <port> root@<host>
 	and enter the root password 'U0iSGVUCr7W3' when prompted
@@ -55,5 +55,5 @@ Setting a specific password for the root account
 If you want to use a preset password instead of a random generated one, you can
 set the environment variable `ROOT_PASS` to your specific password when running the container:
 
-	docker run -d -p 2222:22 -e ROOT_PASS="mypass" tutum/debian:wheezy
+	docker run -d -p 2222:22 -e ROOT_PASS="mypass" tomxiong/debian-ssh:wheezy
 
