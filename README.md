@@ -1,24 +1,30 @@
-debian-ssh
-============
+debian develop kit
+==================
 
-Simple Debian docker images with SSH access
+本项目主要用来准备 Linux 开发环境，方便在 Mac 上用 CLion 开发/调试 C/C++ 项目
+
+目前支持的项目有
+
+- [x] fluent-bit
+
+开发流程参考: [Clion 如何使用 Docker 作为开发环境](https://imhuwq.com/2018/12/02/Clion%20%E4%BD%BF%E7%94%A8%20Docker%20%E4%BD%9C%E4%B8%BA%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/)
 
 
 Usage
 -----
 
-To create the image `debian-ssh` with latest Debian release, 
+To create the image `debian develop kit` with latest Debian release, 
 execute the following commands on the debian-ssh folder:
 
     git checkout master
-    dcoker build -t tomxiong/debian-ssh
+    docker build -t timzaak/devkit .
 
-Running debian-ssh
---------------------
+Running debian develop kit
+--------------------------
 
 To run a container from the image binding it to port 2222 in all interfaces, execute:
 
-	docker run -d -p 2222:22 tomxiong/debian-ssh
+	docker run -d -p 2222:22 timzaak/devkit
 
 The first time that you run your container, a random password will be generated
 for user `root`. To get the password, check the logs of the container by running:
@@ -47,5 +53,9 @@ Setting a specific password for the root account
 If you want to use a preset password instead of a random generated one, you can
 set the environment variable `ROOT_PASS` to your specific password when running the container:
 
-	docker run -d -p 2222:22 -e ROOT_PASS="mypass" tomxiong/debian-ssh
+	docker run -d -p 2222:22  -e ROOT_PASS="mypass" timzaak/devkit
+
+挂载 Volume 命令：
+
+    docker run -d -p 2222:22 --name=devkit -e ROOT_PASS="mypass" -v $(pwd):/development timzaak/devkit
 
