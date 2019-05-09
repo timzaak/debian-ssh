@@ -16,7 +16,8 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get -y --no-install-rec
       zlib1g-dev \
       flex \
       bison \
-      gdb
+      gdb \
+      rsync
 
 
 RUN mkdir -p /var/run/sshd && sed -i "s/.*PermitRootLogin.*/PermitRootLogin yes/g" /etc/ssh/sshd_config

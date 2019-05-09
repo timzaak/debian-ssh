@@ -55,7 +55,22 @@ set the environment variable `ROOT_PASS` to your specific password when running 
 
 	docker run -d -p 2222:22  -e ROOT_PASS="mypass" timzaak/devkit
 
-挂载 Volume 命令：
+作为开发环境基本命令：
 
-    docker run -d -p 2222:22 --name=devkit -e ROOT_PASS="mypass" -v $(pwd):/development timzaak/devkit
+    docker run -d -p 2222:22 -p 2345:2345 --name=devkit -e ROOT_PASS="mypass"  timzaak/devkit
 
+
+
+通用脚本
+
+    #!/usr/bin/env bash
+    # docker.sh
+    
+    action=$1
+    if [ $action = "enter" ]; then
+    docker exec -it devkit bash
+    elif [ $action = "down" ]; then
+        docker stop devkit
+    elif [ $action = "debug" ]; then
+        docker-compose exec my-project sh -c "gdbserver :2345 $(ENTER_EXECUTE) ${*:2}"
+    fi
