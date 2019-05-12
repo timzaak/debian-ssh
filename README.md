@@ -6,6 +6,7 @@ debian develop kit
 目前支持的项目有
 
 - [x] fluent-bit
+- [x] envoy
 
 开发流程参考: [Clion 如何使用 Docker 作为开发环境](https://imhuwq.com/2018/12/02/Clion%20%E4%BD%BF%E7%94%A8%20Docker%20%E4%BD%9C%E4%B8%BA%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/)
 

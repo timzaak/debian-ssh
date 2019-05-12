@@ -17,7 +17,10 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get -y --no-install-rec
       flex \
       bison \
       gdb \
-      rsync
+      ca-certificates \
+      rsync \
+      && apt-get autoremove -y  && apt-get clean \
+      && rm -rf /tmp/* /var/tmp/* && rm -rf /var/lib/apt/lists/*
 
 
 RUN mkdir -p /var/run/sshd && sed -i "s/.*PermitRootLogin.*/PermitRootLogin yes/g" /etc/ssh/sshd_config
